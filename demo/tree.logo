@@ -1,0 +1,19 @@
+void f(int a, int n)
+{
+	if (n==0) return;
+	fw a; rt 45;
+	f(a/2,n-1);
+	rt 90;
+	f(a/2,n-1);
+	rt 45; 
+	pu; fw a; pd;
+}
+
+void main()
+var
+   int a;
+   int n;
+{
+	a = 128; n = 5;
+	f(a,n);
+}

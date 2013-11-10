@@ -1,0 +1,16 @@
+void sharpstar() {
+   repeat (9) {
+      fw 70;
+      rt 170;
+      fw 70;
+      rt -90;
+   }
+}
+
+void main() {
+	repeat (3) {
+		sharpstar();
+		rt 120;
+		pu; fw 150; pd;
+	}
+}

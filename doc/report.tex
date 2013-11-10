@@ -1,0 +1,66 @@
+\documentclass[a4paper,9pt]{article}
+\usepackage[top=0.5in, bottom=0.5in, left=1in, right=1in]{geometry}
+\usepackage{CJK}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage[linesnumbered,boxed]{algorithm2e}
+\usepackage{graphicx}
+\usepackage[unicode,CJKbookmarks]{hyperref}
+\usepackage{subfigure}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage[titletoc]{appendix}
+\usepackage{fancyhdr}
+\setlength{\parindent}{2em}
+\linespread{1.15}
+\begin{document}
+\begin{CJK*}{GBK}{hei}
+
+
+
+\title{\textbf{iLogo移动绘图软件\\报告}}
+\author{计科00班\ 皮一凡}
+\date{}
+\maketitle
+
+\section{概述}
+Logo语言是一款简单易学、语法简单且功能强大的绘图语言。我们希望开发一个运行于Android系统上的Logo语言：iLogo。主要
+支持以下两大功能：编辑Logo语言文件的文本处理系统和执行Logo语言的编译解释器。该应用相对是第一个运行于移动平台的Logo语言
+解释器，能够方便地在手机上做出例如二叉树、分形等复杂图形。并且结合移动平台的优势，能大大扩展Logo语言的教学功能。
+\section{主要功能}
+\begin{itemize}
+  \item iLogo语言编译器。主要有检查语法错误和转为方便解释器执行的中间表示的功能。
+  \item iLogo语言解释器。获得由编译器传来的中间表示，解释执行各条语句，在手机屏幕上作图。
+  \item 整合以上两个个部分，形成一个完整的Android应用iLogo。
+\end{itemize}
+\section{主要开发阶段}
+\begin{enumerate}
+  \item 前期设计阶段。由于Logo语言的方言很多，没有一个统一的规范，我设计一个可行的Logo语言语法规则进行实现。
+  \item 编译器前端设计。分为以下两步：利用Flex和Yacc生成编译器的词法和语法分析部分，建立抽象语法树AST。
+      根据建立好的AST，生成符号表，进行语义检查和报错。
+  \item 编译器中端设计。利用AST和符号表产生中间表示，我设计的中间表示是一种面向对象的方式。即把语句、变量、函数
+      均抽象为一个个对象，而编译器中端的任务就是构建这些对象。
+  \item 解释器设计。开始将转移到Android平台上（前期均在Windows系统上编译调试），
+      利用Android的绘图功能对产生的中间表示进行解释执行。
+  \item 制作Android应用界面。
+\end{enumerate}
+\section{iLogo语言}
+iLogo语言是一个面向过程、强类型的简单绘图语言。其语法风格接近C。支持过程调用、绘图、循环等语法特性。详细语法
+规则可参考frontend目录下的Parser.y中EBNF范式。\par
+使用File按钮指定手机上写好的iLogo源代码（.logo后缀），按Compile可以进行编译解释。如果出现编译错误将
+弹出一个对话框汇报第一个语法错误。没有语法错误将直接解释执行在屏幕上。Clear按钮表示清空屏幕绘图。\par
+测试方法为安装bin目录下的apk文件，将demo文件夹下的样例加载至手机上运行即可。
+\section{优点及下一步开发方向}
+实现的Logo语言简单易学、充满趣味，在开发完成其他同学能够根据语法规范轻松在手机上作图。并且，可以作为一种
+Android上的矢量图标准进行下一步开发。\par
+目前可以改进的地方有：加入浮点数、数组、面向对象等高级功能的支持、内嵌文本编辑器等等。
+\section{参考}
+\begin{itemize}
+  \item Logo语言规范。\url{http://en.wikipedia.org/wiki/Logo_(programming_language)}
+  \item 编译原理课程Decaf实验。
+  \item Android开发指南。\url{http://developer.android.com/}
+  \item 文件选择器实现。\url{http://www.eoeandroid.com/thread-96218-1-1.html}
+\end{itemize}
+\newpage
+\end{CJK*}
+\end{document} 

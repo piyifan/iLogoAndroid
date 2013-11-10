@@ -1,0 +1,28 @@
+void star()
+{
+	repeat (6) {
+		repeat (12) {
+			fw 30;
+			rt 30;
+		}
+		rt 60;
+	}
+}
+
+void megastar()
+{
+	repeat (7) {
+		rt 12;
+		star();
+	}
+}
+
+void main()
+{
+	megastar();
+	pu; fw 150; pd;
+	megastar();
+	pu; rt 180; fw 300; rt 180; pd;
+	megastar();
+}
+
